@@ -18,7 +18,7 @@ export const lightSpeed: LightSpeedConfig = {
   date: "2026.06.19",
   description:
     "Velocity beyond sound. A reality rupture captured on film — play it loud.",
-  poster: "/art/wireframe-dimension.png",
+  poster: "/art/light-speed.png",
   videoSrc: undefined,
   youtubeId: undefined,
   links: {},

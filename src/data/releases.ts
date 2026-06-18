@@ -6,7 +6,7 @@ export const releases: Release[] = [
     title: "SPACE AGAIN",
     date: "2026.06.12",
     mood: "void",
-    cover: "/art/cosmic-skull.png",
+    cover: "/art/space-again.png",
     featured: true,
     description:
       "A cosmic transmission through ice-blue frequencies. The dimension opens again.",
@@ -34,7 +34,7 @@ export const releases: Release[] = [
     title: "UNTIL THE TRUMPET SINGS",
     date: "2026.04.30",
     mood: "distortion",
-    cover: "/art/mally-reality.png",
+    cover: "/art/until-the-trumpet-sings.png",
     description:
       "A signal waiting to break through. Suspended between worlds until the sound arrives.",
     links: {

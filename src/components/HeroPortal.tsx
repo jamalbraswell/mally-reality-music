@@ -35,10 +35,10 @@ export default function HeroPortal() {
             }}
           />
           <Image
-            src="/art/cosmic-skull.png"
-            alt="Mally Reality cosmic portal"
+            src="/art/light-speed.png"
+            alt="Mally Reality — Light Speed"
             fill
-            className="object-contain drop-shadow-[0_0_40px_rgba(0,240,255,0.3)]"
+            className="object-cover rounded-full drop-shadow-[0_0_40px_rgba(0,240,255,0.3)]"
             priority
             sizes="(max-width: 768px) 112px, 224px"
           />
