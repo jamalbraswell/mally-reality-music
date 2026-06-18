@@ -78,23 +78,6 @@ export default function HeroPortal() {
 
         <PlatformIcons size="sm" />
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="pointer-events-none absolute bottom-4 right-6 hidden w-32 overflow-hidden rounded-xl opacity-40 lg:block lg:w-40"
-      >
-        <div className="chrome-border aspect-[3/4] overflow-hidden rounded-xl">
-          <Image
-            src="/art/mally-reality.png"
-            alt="Mally Reality"
-            width={160}
-            height={213}
-            className="h-full w-full object-cover"
-          />
-        </div>
-      </motion.div>
     </section>
   );
 }
