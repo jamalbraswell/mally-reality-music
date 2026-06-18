@@ -78,7 +78,7 @@ export default function CompactReleases({ latest, recent, onOpen }: CompactRelea
         {recent.length > 0 && (
           <div>
             <p className="mb-2 tracking-impact text-[10px] uppercase text-violet-neon/70">
-              Recent Tracks
+              Recent Songs
             </p>
             <div className="space-y-2">
               {recent.map((release) => (
