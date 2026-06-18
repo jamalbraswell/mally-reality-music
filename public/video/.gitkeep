@@ -1,0 +1,2 @@
+# Drop Light Speed video here as light-speed.mp4
+# Then set videoSrc in src/data/light-speed.ts to "/video/light-speed.mp4"

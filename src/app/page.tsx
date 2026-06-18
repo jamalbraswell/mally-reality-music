@@ -7,6 +7,7 @@ import BackgroundCanvas from "@/components/BackgroundCanvas";
 import Scanlines from "@/components/Scanlines";
 import CornerDistortion from "@/components/CornerDistortion";
 import HeroPortal from "@/components/HeroPortal";
+import LightSpeedPortal from "@/components/LightSpeedPortal";
 import FeaturedRelease from "@/components/FeaturedRelease";
 import ReleaseGallery from "@/components/ReleaseGallery";
 import SocialPortal from "@/components/SocialPortal";
@@ -40,6 +41,7 @@ export default function Home() {
       <CornerDistortion />
 
       <HeroPortal />
+      <LightSpeedPortal />
       <FeaturedRelease release={featuredRelease} onOpen={setActiveRelease} />
       <ReleaseGallery releases={galleryReleases} onOpen={setActiveRelease} />
       <SocialPortal />
