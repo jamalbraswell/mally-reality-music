@@ -47,3 +47,7 @@ export const releases: Release[] = [
 
 export const featuredRelease = releases.find((r) => r.featured) ?? releases[0];
 export const galleryReleases = releases.filter((r) => !r.featured);
+
+export const recentTracks = [...galleryReleases].sort(
+  (a, b) => new Date(b.date.replace(/\./g, "-")).getTime() - new Date(a.date.replace(/\./g, "-")).getTime(),
+);

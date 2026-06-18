@@ -72,35 +72,16 @@ export default function LightSpeedPortal() {
   }, []);
 
   return (
-    <section className="relative px-6 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8 }}
-          className="mb-10 text-center"
-        >
-          <GlitchText
-            as="p"
-            hover
-            className="tracking-impact text-xs uppercase text-[#facc15]/80"
-          >
+    <section className="relative px-4 py-3 md:px-6 md:py-12">
+      <div className="mx-auto max-w-lg md:max-w-3xl">
+        <div className="mb-2 text-center md:mb-6">
+          <p className="tracking-impact text-[10px] uppercase text-[#facc15]/80">
             Incoming Drop
-          </GlitchText>
-          <h2 className="mt-3 font-[family-name:var(--font-cormorant)] text-3xl italic text-chrome/50 md:text-4xl">
-            Visual Transmission
-          </h2>
-        </motion.div>
+          </p>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="chrome-border overflow-hidden rounded-3xl"
-        >
-          <div className="relative aspect-video w-full overflow-hidden bg-void">
+        <div className="chrome-border overflow-hidden rounded-2xl">
+          <div className="relative aspect-[16/9] max-h-[180px] w-full overflow-hidden bg-void md:max-h-none">
             {/* Poster layer */}
             <Image
               src={lightSpeed.poster}
@@ -148,10 +129,10 @@ export default function LightSpeedPortal() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="absolute inset-0 flex flex-col items-center justify-center gap-6 p-6"
+                  className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4 md:gap-4"
                 >
                   <span
-                    className="rounded-full px-4 py-1.5 text-xs uppercase tracking-luxury"
+                    className="rounded-full px-3 py-1 text-[9px] uppercase tracking-luxury md:text-xs"
                     style={{
                       background: mood.bg,
                       color: mood.text,
@@ -164,38 +145,22 @@ export default function LightSpeedPortal() {
                   <GlitchText
                     as="h3"
                     hover
-                    className="text-center text-4xl font-bold uppercase tracking-impact text-white md:text-7xl text-glow-cyan"
+                    className="text-center text-2xl font-bold uppercase tracking-impact text-white md:text-5xl text-glow-cyan"
                   >
                     {lightSpeed.title}
                   </GlitchText>
-
-                  <p className="max-w-md text-center font-[family-name:var(--font-cormorant)] text-lg italic text-chrome/60">
-                    {lightSpeed.description}
-                  </p>
 
                   {hasLightSpeedVideo ? (
                     <button
                       onClick={playWithSound}
                       disabled={isLoading}
-                      className="vibrate-hover chromatic-hover group relative mt-2 overflow-hidden rounded-full px-10 py-4 glass-panel transition-transform hover:scale-105 disabled:opacity-60"
+                      className="vibrate-hover chromatic-hover mt-1 rounded-full px-6 py-2.5 text-[10px] uppercase tracking-luxury glass-panel text-cyan-neon disabled:opacity-60 md:px-8 md:py-3 md:text-xs"
                     >
-                      <span className="relative z-10 flex items-center gap-3 text-sm font-medium uppercase tracking-luxury text-cyan-neon">
-                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-neon/20 text-lg">
-                          ▶
-                        </span>
-                        {isLoading ? "Loading..." : "Play With Sound"}
-                      </span>
-                      <div
-                        className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100"
-                        style={{
-                          background:
-                            "linear-gradient(135deg, rgba(0,240,255,0.15), rgba(255,0,170,0.1))",
-                        }}
-                      />
+                      {isLoading ? "Loading..." : "▶ Play With Sound"}
                     </button>
                   ) : (
-                    <p className="tracking-luxury text-xs uppercase text-white/40">
-                      Video link loading — check back {lightSpeed.date}
+                    <p className="tracking-luxury text-[9px] uppercase text-white/40 md:text-xs">
+                      Drops {lightSpeed.date}
                     </p>
                   )}
                 </motion.div>
@@ -223,23 +188,7 @@ export default function LightSpeedPortal() {
               }}
             />
           </div>
-
-          <div className="glass-panel flex flex-col items-start justify-between gap-4 p-6 md:flex-row md:items-center md:p-8">
-            <div>
-              <p className="tracking-luxury text-[10px] uppercase text-white/30">
-                {lightSpeed.date}
-              </p>
-              <p className="mt-1 text-sm text-chrome/50">
-                {hasLightSpeedVideo
-                  ? "Tap play — audio on. Turn it up."
-                  : "Send the video link tomorrow and it goes live instantly."}
-              </p>
-            </div>
-            <span className="tracking-impact text-[10px] uppercase text-magenta-neon/50">
-              Reality Shift
-            </span>
-          </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -2,15 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { Release } from "@/types";
-import { featuredRelease, galleryReleases } from "@/data/releases";
+import { featuredRelease, recentTracks } from "@/data/releases";
 import BackgroundCanvas from "@/components/BackgroundCanvas";
 import Scanlines from "@/components/Scanlines";
 import CornerDistortion from "@/components/CornerDistortion";
 import HeroPortal from "@/components/HeroPortal";
 import LightSpeedPortal from "@/components/LightSpeedPortal";
-import FeaturedRelease from "@/components/FeaturedRelease";
-import ReleaseGallery from "@/components/ReleaseGallery";
-import SocialPortal from "@/components/SocialPortal";
+import CompactReleases from "@/components/CompactReleases";
 import StreamingPanel from "@/components/StreamingPanel";
 
 export default function Home() {
@@ -40,11 +38,15 @@ export default function Home() {
       <Scanlines />
       <CornerDistortion />
 
-      <HeroPortal />
-      <LightSpeedPortal />
-      <FeaturedRelease release={featuredRelease} onOpen={setActiveRelease} />
-      <ReleaseGallery releases={galleryReleases} onOpen={setActiveRelease} />
-      <SocialPortal />
+      <div className="relative mx-auto flex min-h-screen max-w-lg flex-col md:max-w-3xl">
+        <HeroPortal />
+        <LightSpeedPortal />
+        <CompactReleases
+          latest={featuredRelease}
+          recent={recentTracks}
+          onOpen={setActiveRelease}
+        />
+      </div>
 
       <StreamingPanel release={activeRelease} onClose={() => setActiveRelease(null)} />
     </main>
