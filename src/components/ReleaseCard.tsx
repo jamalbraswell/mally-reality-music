@@ -29,7 +29,7 @@ export default function ReleaseCard({ release, index, onOpen }: ReleaseCardProps
             src={release.cover}
             alt={release.title}
             fill
-            className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:blur-[2px]"
+            className="object-cover"
             sizes="(max-width: 768px) 100vw, 400px"
           />
 

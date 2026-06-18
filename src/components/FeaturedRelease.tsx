@@ -39,7 +39,6 @@ export default function FeaturedRelease({ release, onOpen }: FeaturedReleaseProp
         <motion.button
           onClick={() => onOpen(release)}
           className="group relative mx-auto block w-full max-w-4xl text-left chromatic-hover"
-          whileHover={{ scale: 1.01 }}
           whileTap={{ scale: 0.99 }}
           transition={{ duration: 0.4 }}
         >
@@ -49,7 +48,7 @@ export default function FeaturedRelease({ release, onOpen }: FeaturedReleaseProp
                 src={release.cover}
                 alt={release.title}
                 fill
-                className="object-cover transition-all duration-700 group-hover:scale-105 group-hover:blur-[1px]"
+                className="object-cover"
                 sizes="(max-width: 768px) 100vw, 896px"
                 priority
               />
