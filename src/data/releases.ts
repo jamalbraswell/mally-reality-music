@@ -6,10 +6,10 @@ export const releases: Release[] = [
     title: "SPACE AGAIN",
     date: "2026.06.12",
     mood: "void",
-    cover: "/art/space-again.png",
+    cover: "/art/cosmic-skull.png",
     featured: true,
     description:
-      "A cosmic transmission through ice-blue frequencies. Neptune calls — the dimension opens again.",
+      "A cosmic transmission through ice-blue frequencies. The dimension opens again.",
     links: {
       spotify: "https://open.spotify.com/track/33lIqtMbL0lJX32hufS1Mg",
       apple: "https://music.apple.com/us/song/space-again/6778762143",
@@ -34,9 +34,9 @@ export const releases: Release[] = [
     title: "UNTIL THE TRUMPET SINGS",
     date: "2026.04.30",
     mood: "distortion",
-    cover: "/art/until-the-trumpet-sings.png",
+    cover: "/art/mally-reality.png",
     description:
-      "Apocalyptic warmth. Figures suspended between worlds, waiting for the signal.",
+      "A signal waiting to break through. Suspended between worlds until the sound arrives.",
     links: {
       spotify: "https://open.spotify.com/track/7KrsoeyKFRONBwkMMIBScK",
       apple: "https://music.apple.com/us/song/until-the-trumpet-sings/6764095245",

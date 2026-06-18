@@ -13,4 +13,16 @@ export const socialLinks: SocialLink[] = [
     href: "https://music.apple.com/us/song/space-again/6778762143",
     icon: "apple",
   },
+  {
+    id: "tiktok",
+    label: "TikTok",
+    href: "https://www.tiktok.com/@mallyreality",
+    icon: "tiktok",
+  },
+  {
+    id: "instagram",
+    label: "Instagram",
+    href: "https://www.instagram.com/mally.reality/",
+    icon: "instagram",
+  },
 ];
