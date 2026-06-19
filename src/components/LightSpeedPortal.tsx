@@ -3,7 +3,7 @@
 import { useCallback, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { lightSpeed, hasLightSpeedVideo, isLightSpeedLive } from "@/data/light-speed";
+import { lightSpeed, hasLightSpeedVideo } from "@/data/light-speed";
 import { moodColors } from "@/lib/mood";
 import GlitchText from "./GlitchText";
 import StreamingIcon from "./StreamingIcon";
@@ -77,19 +77,18 @@ export default function LightSpeedPortal() {
       <div className="mx-auto max-w-lg md:max-w-3xl">
         <div className="mb-2 text-center md:mb-6">
           <p className="tracking-impact text-[10px] uppercase text-[#facc15]/80">
-            {isLightSpeedLive ? "Out Now" : "Incoming Drop"}
+            Out Now
           </p>
         </div>
 
         <div className="chrome-border overflow-hidden rounded-2xl">
           <div className="relative aspect-[16/9] max-h-[180px] w-full overflow-hidden bg-void md:max-h-none">
-            {/* Poster layer */}
             <Image
               src={lightSpeed.poster}
               alt={lightSpeed.title}
               fill
               className={`object-cover transition-opacity duration-700 ${
-                isPlaying ? "opacity-30" : "opacity-60"
+                isPlaying ? "opacity-30" : "opacity-80"
               }`}
               sizes="(max-width: 768px) 100vw, 1152px"
               priority
@@ -97,7 +96,6 @@ export default function LightSpeedPortal() {
 
             <div className="absolute inset-0 bg-gradient-to-t from-void via-void/30 to-transparent" />
 
-            {/* Native video */}
             {lightSpeed.videoSrc && (
               <video
                 ref={videoRef}
@@ -112,7 +110,6 @@ export default function LightSpeedPortal() {
               />
             )}
 
-            {/* YouTube embed */}
             {lightSpeed.youtubeId && isPlaying && (
               <iframe
                 src={getYoutubeEmbedUrl(lightSpeed.youtubeId, true)}
@@ -123,7 +120,6 @@ export default function LightSpeedPortal() {
               />
             )}
 
-            {/* Overlay UI */}
             <AnimatePresence>
               {!isPlaying && (
                 <motion.div
@@ -140,7 +136,7 @@ export default function LightSpeedPortal() {
                       boxShadow: `0 0 30px ${mood.glow}`,
                     }}
                   >
-                    {isLightSpeedLive ? "out now" : hasLightSpeedVideo ? "new drop" : "drops soon"}
+                    out now
                   </span>
 
                   <GlitchText
@@ -159,7 +155,7 @@ export default function LightSpeedPortal() {
                     >
                       {isLoading ? "Loading..." : "▶ Play With Sound"}
                     </button>
-                  ) : isLightSpeedLive ? (
+                  ) : (
                     <div className="mt-2 flex gap-2">
                       {lightSpeed.links.spotify && (
                         <StreamingIcon platform="spotify" href={lightSpeed.links.spotify} size="md" />
@@ -168,16 +164,11 @@ export default function LightSpeedPortal() {
                         <StreamingIcon platform="apple" href={lightSpeed.links.apple} size="md" />
                       )}
                     </div>
-                  ) : (
-                    <p className="tracking-luxury text-[9px] uppercase text-white/40 md:text-xs">
-                      Drops {lightSpeed.date}
-                    </p>
                   )}
                 </motion.div>
               )}
             </AnimatePresence>
 
-            {/* Playing controls */}
             {isPlaying && (
               <div className="absolute bottom-4 right-4 z-10 flex gap-2">
                 <button
@@ -189,7 +180,6 @@ export default function LightSpeedPortal() {
               </div>
             )}
 
-            {/* Glow ring */}
             <div
               className="pointer-events-none absolute -inset-1 rounded-3xl opacity-40 blur-2xl transition-opacity"
               style={{

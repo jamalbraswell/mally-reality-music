@@ -25,4 +25,3 @@ export const lightSpeed: LightSpeedConfig = {
 };
 
 export const hasLightSpeedVideo = Boolean(lightSpeed.videoSrc || lightSpeed.youtubeId);
-export const isLightSpeedLive = Boolean(lightSpeed.links.spotify || lightSpeed.links.apple);
