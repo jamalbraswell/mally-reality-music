@@ -5,23 +5,24 @@ export interface LightSpeedConfig {
   date: string;
   description: string;
   poster: string;
-  /** Direct MP4/WebM URL or path like /video/light-speed.mp4 */
   videoSrc?: string;
-  /** YouTube video ID (e.g. from youtube.com/watch?v=ID) */
   youtubeId?: string;
-  links?: StreamingLinks;
+  links: StreamingLinks;
 }
 
-// Update videoSrc or youtubeId when the drop goes live tomorrow.
 export const lightSpeed: LightSpeedConfig = {
   title: "LIGHT SPEED",
   date: "2026.06.19",
   description:
-    "Velocity beyond sound. A reality rupture captured on film — play it loud.",
+    "Velocity beyond sound. A reality rupture — out now on all platforms.",
   poster: "/art/light-speed.png",
   videoSrc: undefined,
   youtubeId: undefined,
-  links: {},
+  links: {
+    spotify: "https://open.spotify.com/track/2JUOc4c5ddkMKzyBW7NO1c",
+    apple: "https://music.apple.com/us/song/light-speed/6781392114",
+  },
 };
 
 export const hasLightSpeedVideo = Boolean(lightSpeed.videoSrc || lightSpeed.youtubeId);
+export const isLightSpeedLive = Boolean(lightSpeed.links.spotify || lightSpeed.links.apple);

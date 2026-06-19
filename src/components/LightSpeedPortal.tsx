@@ -3,9 +3,10 @@
 import { useCallback, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { lightSpeed, hasLightSpeedVideo } from "@/data/light-speed";
+import { lightSpeed, hasLightSpeedVideo, isLightSpeedLive } from "@/data/light-speed";
 import { moodColors } from "@/lib/mood";
 import GlitchText from "./GlitchText";
+import StreamingIcon from "./StreamingIcon";
 
 function getYoutubeEmbedUrl(id: string, autoplay: boolean) {
   const params = new URLSearchParams({
@@ -76,7 +77,7 @@ export default function LightSpeedPortal() {
       <div className="mx-auto max-w-lg md:max-w-3xl">
         <div className="mb-2 text-center md:mb-6">
           <p className="tracking-impact text-[10px] uppercase text-[#facc15]/80">
-            Incoming Drop
+            {isLightSpeedLive ? "Out Now" : "Incoming Drop"}
           </p>
         </div>
 
@@ -139,7 +140,7 @@ export default function LightSpeedPortal() {
                       boxShadow: `0 0 30px ${mood.glow}`,
                     }}
                   >
-                    {hasLightSpeedVideo ? "new drop" : "drops tomorrow"}
+                    {isLightSpeedLive ? "out now" : hasLightSpeedVideo ? "new drop" : "drops soon"}
                   </span>
 
                   <GlitchText
@@ -158,6 +159,15 @@ export default function LightSpeedPortal() {
                     >
                       {isLoading ? "Loading..." : "▶ Play With Sound"}
                     </button>
+                  ) : isLightSpeedLive ? (
+                    <div className="mt-2 flex gap-2">
+                      {lightSpeed.links.spotify && (
+                        <StreamingIcon platform="spotify" href={lightSpeed.links.spotify} size="md" />
+                      )}
+                      {lightSpeed.links.apple && (
+                        <StreamingIcon platform="apple" href={lightSpeed.links.apple} size="md" />
+                      )}
+                    </div>
                   ) : (
                     <p className="tracking-luxury text-[9px] uppercase text-white/40 md:text-xs">
                       Drops {lightSpeed.date}

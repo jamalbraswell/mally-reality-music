@@ -4,13 +4,13 @@ export const socialLinks: SocialLink[] = [
   {
     id: "spotify",
     label: "Spotify",
-    href: "https://open.spotify.com/track/33lIqtMbL0lJX32hufS1Mg",
+    href: "https://open.spotify.com/track/2JUOc4c5ddkMKzyBW7NO1c",
     icon: "spotify",
   },
   {
     id: "apple",
     label: "Apple Music",
-    href: "https://music.apple.com/us/song/space-again/6778762143",
+    href: "https://music.apple.com/us/song/light-speed/6781392114",
     icon: "apple",
   },
   {
