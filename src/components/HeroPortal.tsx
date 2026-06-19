@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { hero } from "@/lib/site-content";
 import GlitchText from "./GlitchText";
 import PlatformIcons from "./PlatformIcons";
 
@@ -9,14 +10,16 @@ export default function HeroPortal() {
   return (
     <section className="relative flex flex-col items-center overflow-hidden px-4 pb-4 pt-8 md:min-h-[70vh] md:justify-center md:px-6 md:pb-8 md:pt-16">
       <div className="pointer-events-none absolute inset-0">
-        <Image
-          src="/art/wireframe-dimension.png"
-          alt=""
-          fill
-          className="object-cover opacity-[0.12] mix-blend-screen"
-          priority
-          sizes="100vw"
-        />
+        {hero.backgroundImage && (
+          <Image
+            src={hero.backgroundImage}
+            alt=""
+            fill
+            className="object-cover opacity-[0.12] mix-blend-screen"
+            priority
+            sizes="100vw"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-void/40 via-transparent to-void" />
       </div>
 
@@ -35,8 +38,8 @@ export default function HeroPortal() {
             }}
           />
           <Image
-            src="/art/light-speed.png"
-            alt="Mally Reality — Light Speed"
+            src={hero.logo}
+            alt={hero.artistName}
             fill
             className="object-cover rounded-full drop-shadow-[0_0_40px_rgba(0,240,255,0.3)]"
             priority
@@ -51,7 +54,7 @@ export default function HeroPortal() {
           reveal
           className="text-4xl font-bold uppercase tracking-impact text-white md:text-7xl lg:text-8xl text-glow-cyan"
         >
-          MALLY REALITY
+          {hero.artistName}
         </GlitchText>
 
         <motion.p
@@ -60,7 +63,7 @@ export default function HeroPortal() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-3 font-[family-name:var(--font-cormorant)] text-base italic text-chrome/70 md:mt-6 md:text-xl"
         >
-          Sound is not music. It&apos;s a reality shift.
+          {hero.tagline}
         </motion.p>
 
         <motion.div
@@ -71,7 +74,7 @@ export default function HeroPortal() {
         >
           <span className="h-px w-8 bg-gradient-to-r from-transparent to-cyan-neon/50 md:w-12" />
           <span className="tracking-luxury text-[10px] uppercase text-cyan-neon/60 md:text-xs">
-            Enter The Sound
+            {hero.ctaText}
           </span>
           <span className="h-px w-8 bg-gradient-to-l from-transparent to-magenta-neon/50 md:w-12" />
         </motion.div>

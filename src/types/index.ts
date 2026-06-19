@@ -14,8 +14,13 @@ export interface Release {
   mood: MoodTag;
   cover: string;
   featured?: boolean;
+  showInPromo?: boolean;
+  promoBadge?: string;
+  promoStatus?: string;
   description?: string;
   links: StreamingLinks;
+  videoSrc?: string;
+  youtubeId?: string;
   gridClass?: string;
 }
 

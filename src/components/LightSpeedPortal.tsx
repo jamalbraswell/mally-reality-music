@@ -3,7 +3,7 @@
 import { useCallback, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { lightSpeed, hasLightSpeedVideo } from "@/data/light-speed";
+import { promoRelease, hasReleaseVideo } from "@/lib/site-content";
 import { moodColors } from "@/lib/mood";
 import GlitchText from "./GlitchText";
 import StreamingIcon from "./StreamingIcon";
@@ -19,18 +19,22 @@ function getYoutubeEmbedUrl(id: string, autoplay: boolean) {
 }
 
 export default function LightSpeedPortal() {
+  const release = promoRelease;
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const hasVideo = hasReleaseVideo(release);
 
-  const mood = moodColors.pulse;
+  const mood = moodColors[release.mood];
+  const badge = release.promoBadge ?? "Out Now";
+  const status = release.promoStatus ?? "out now";
 
   const playWithSound = useCallback(async () => {
-    if (!hasLightSpeedVideo) return;
+    if (!hasVideo) return;
 
     setIsLoading(true);
 
-    if (lightSpeed.youtubeId) {
+    if (release.youtubeId) {
       setIsPlaying(true);
       setIsLoading(false);
       return;
@@ -61,31 +65,29 @@ export default function LightSpeedPortal() {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [hasVideo, release.youtubeId]);
 
   const pauseVideo = useCallback(() => {
-    if (lightSpeed.youtubeId) {
+    if (release.youtubeId) {
       setIsPlaying(false);
       return;
     }
     videoRef.current?.pause();
     setIsPlaying(false);
-  }, []);
+  }, [release.youtubeId]);
 
   return (
     <section className="relative px-4 py-3 md:px-6 md:py-12">
       <div className="mx-auto max-w-lg md:max-w-3xl">
         <div className="mb-2 text-center md:mb-6">
-          <p className="tracking-impact text-[10px] uppercase text-[#facc15]/80">
-            Out Now
-          </p>
+          <p className="tracking-impact text-[10px] uppercase text-[#facc15]/80">{badge}</p>
         </div>
 
         <div className="chrome-border overflow-hidden rounded-2xl">
           <div className="relative aspect-[16/9] max-h-[180px] w-full overflow-hidden bg-void md:max-h-none">
             <Image
-              src={lightSpeed.poster}
-              alt={lightSpeed.title}
+              src={release.cover}
+              alt={release.title}
               fill
               className={`object-cover transition-opacity duration-700 ${
                 isPlaying ? "opacity-30" : "opacity-80"
@@ -96,11 +98,11 @@ export default function LightSpeedPortal() {
 
             <div className="absolute inset-0 bg-gradient-to-t from-void via-void/30 to-transparent" />
 
-            {lightSpeed.videoSrc && (
+            {release.videoSrc && (
               <video
                 ref={videoRef}
-                src={lightSpeed.videoSrc}
-                poster={lightSpeed.poster}
+                src={release.videoSrc}
+                poster={release.cover}
                 playsInline
                 loop
                 preload="auto"
@@ -110,10 +112,10 @@ export default function LightSpeedPortal() {
               />
             )}
 
-            {lightSpeed.youtubeId && isPlaying && (
+            {release.youtubeId && isPlaying && (
               <iframe
-                src={getYoutubeEmbedUrl(lightSpeed.youtubeId, true)}
-                title={lightSpeed.title}
+                src={getYoutubeEmbedUrl(release.youtubeId, true)}
+                title={release.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="absolute inset-0 h-full w-full"
@@ -136,7 +138,7 @@ export default function LightSpeedPortal() {
                       boxShadow: `0 0 30px ${mood.glow}`,
                     }}
                   >
-                    out now
+                    {status}
                   </span>
 
                   <GlitchText
@@ -144,10 +146,10 @@ export default function LightSpeedPortal() {
                     hover
                     className="text-center text-2xl font-bold uppercase tracking-impact text-white md:text-5xl text-glow-cyan"
                   >
-                    {lightSpeed.title}
+                    {release.title}
                   </GlitchText>
 
-                  {hasLightSpeedVideo ? (
+                  {hasVideo ? (
                     <button
                       onClick={playWithSound}
                       disabled={isLoading}
@@ -157,11 +159,11 @@ export default function LightSpeedPortal() {
                     </button>
                   ) : (
                     <div className="mt-2 flex gap-2">
-                      {lightSpeed.links.spotify && (
-                        <StreamingIcon platform="spotify" href={lightSpeed.links.spotify} size="md" />
+                      {release.links.spotify && (
+                        <StreamingIcon platform="spotify" href={release.links.spotify} size="md" />
                       )}
-                      {lightSpeed.links.apple && (
-                        <StreamingIcon platform="apple" href={lightSpeed.links.apple} size="md" />
+                      {release.links.apple && (
+                        <StreamingIcon platform="apple" href={release.links.apple} size="md" />
                       )}
                     </div>
                   )}
